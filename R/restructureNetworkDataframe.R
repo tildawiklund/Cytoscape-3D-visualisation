@@ -46,7 +46,11 @@ restructureNetworkDF <- function(network, NodeSizeScale, NodeBorderScale, EdgeWi
 
   node_columns_to_keep <- c("id", "Rules", "name", "group", "color.background", "value",
                             "color.border", "borderWidth", "meanAcc",
-                            "meanSupp", "meanDecisionCoverage", "title", "popup")
+                            # ---------- TILDA TESTS ------- 
+                            #"meanSupp", "meanDecisionCoverage", "title", "popup") #original
+                            "meanSupp", "meanDecisionCoverage", "title", "Z_AXIS",
+                            "X_AXIS_norm_meanAcc", "Y_AXIS_norm_meanSupp", "popup")
+                            # ------------------------------ 
 
   network$nodes <- network$nodes[intersect(node_columns_to_keep, names(network$nodes))]
 

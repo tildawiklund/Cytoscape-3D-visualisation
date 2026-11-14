@@ -144,6 +144,15 @@ generateNet=function(decs, rules, type, RulesSetSite, TopNodes,FiltrParam,
       NodeConnection = NodeConnection, title = NodeTitle
     )
   }
+
+  # ----------------- TILDA tests to add column for Z+X+Y-axis --------------------
+  NodeInfoDF$Z_AXIS <- sample(0:300, nrow(NodeInfoDF), replace = TRUE)
+  
+  NodeInfoDF$X_AXIS_norm_meanAcc <- scales::rescale(NodeInfoDF$meanAcc, to = c(0, 300))
+  NodeInfoDF$Y_AXIS_norm_meanSupp <- scales::rescale(NodeInfoDF$meanSupp, to = c(0, 300))
+
+  # ---------------------------------------------------------------------------
+
   # OlD version
   # # overwrite if filtering is on support vs coverage
   # if(FiltrParam != 'Min Decision Coverage'){
