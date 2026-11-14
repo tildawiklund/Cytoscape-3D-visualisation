@@ -2,7 +2,9 @@
 
 <img src="images/VIsuNet_logo2.png" width=200; align="middle">
 
-
+*** 
+This is a work from komorowskilab/csVisuNet. The code supports 3D-visualisation. For instructions, see tildawiklund/3D-visualisation.
+*** 
 
 *** 
 VisuNet is an interactive tool for network visualization of complex rule-based classifiers. VisuNet can be applied to any classification problem and is commonly used with complex health-related decision tasks. The rule networks produced can clearly identify driving genes (metabolites, methylation sites, etc) and their expression levels. 
@@ -15,7 +17,7 @@ While csVIsuNet is the migrated version of VisuNet into Cytoscape. (https://cyto
 ***
 Installation
 ```R
-devtools::install_github("komorowskilab/csVisuNet")
+devtools::install_github("tildawiklund/Cytoscape-3D-visualisation")
 ```
 
 ***
