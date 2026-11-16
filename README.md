@@ -3,10 +3,10 @@
 <img src="images/VIsuNet_logo2.png" width=200; align="middle">
 
 *** 
-This is a work from komorowskilab/csVisuNet. The code supports 3D-visualisation. For instructions, see tildawiklund/3D-visualisation.
+This is a work from komorowskilab/csVisuNet. The code supports 3D-visualisation. For instructions, see tildawiklund/3D-visualisation for more information.
 
 
-See [run_visunet.R](run_visunet.R)
+See [run_visunet.R](run_visunet.R) for instructions on how to run the 3D visualisation in Cytoscape.
 *** 
 
 *** 

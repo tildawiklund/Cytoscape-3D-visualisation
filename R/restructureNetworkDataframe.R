@@ -48,7 +48,7 @@ restructureNetworkDF <- function(network, NodeSizeScale, NodeBorderScale, EdgeWi
                             "color.border", "borderWidth", "meanAcc",
                             # ---------- TILDA TESTS ------- 
                             #"meanSupp", "meanDecisionCoverage", "title", "popup") #original
-                            "meanSupp", "meanDecisionCoverage", "title", "Z_AXIS",
+                            "meanSupp", "meanDecisionCoverage", "title", "Z_AXIS_norm_meanDecCov",
                             "X_AXIS_norm_meanAcc", "Y_AXIS_norm_meanSupp", "popup")
                             # ------------------------------ 
 

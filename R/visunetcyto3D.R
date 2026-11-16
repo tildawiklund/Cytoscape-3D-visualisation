@@ -229,9 +229,9 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
   setVisualStyle(style_name)
 
   # ---------- TILDA TESTS - add Z_AXIS + X+ Y to node attributes--------
-  # Z_AXIS -> node Z position (only visible with the Cy3D renderer)
+  # Z_AXIS_norm_meanDecCov -> node Z position (only visible with the Cy3D renderer)
   updateStyleMapping(style_name,
-    mapVisualProperty("NODE_Z_LOCATION", "Z_AXIS", "p"))
+    mapVisualProperty("NODE_Z_LOCATION", "Z_AXIS_norm_meanDecCov", "p"))
 
   # X_AXIS_norm_meanAcc -> node X position (only visible with the Cy3D renderer)
   updateStyleMapping(style_name,
