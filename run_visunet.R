@@ -2,19 +2,25 @@ library(R.ROSETTA)
 library(devtools)
 library(RCy3)
 
-# load version of VisuNet
-devtools::load_all("~/Documents/Jan/VisuNet/GithUb/VisuNet.v.1.1")
 
+# Get functions for 3D implementation
+devtools::install_github("tildawiklund/Cytoscape-3D-visualisation")
+#devtools::load_all("/Users/tildawiklund/Desktop/Slutkursen/Cytoscape-3D-visualisation")
+
+# Run Rosetta
 ros <- rosetta(autcon)
-# VisuNet with GO annotations
-vis <- visunet(ros$main, addGO = TRUE, GO_ontology = "MF", NodeSize = "sum")
 
-
-#to write a file
-library(data.table)
-fwrite(vis$all$nodes,'~/Documents/gFunctions/file.csv')
-=======
-# VisuNet in cytoscaoe
 # Have cytoscape app open on computer
-visunetcyto(ros$main, title="VisuNet Networks")
+cytoscapePing() # to see if Cytoscape is open
+
+# Make sure to have Cy3D downloaded
+commandsRun("cy3d set renderer rendererID=org.baderlab.cy3d")
+
+# VisuNet on Cytoscape in 3D format
+vis <- visunetcyto3D(ros$main, title="Networks")
+
+
+# To write a file and save into this folder
+library(data.table)
+fwrite(vis$all$nodes,'node_info_for_cytoscape.csv', sep = ";")
 

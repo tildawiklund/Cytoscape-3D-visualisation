@@ -4,6 +4,9 @@
 
 *** 
 This is a work from komorowskilab/csVisuNet. The code supports 3D-visualisation. For instructions, see tildawiklund/3D-visualisation.
+
+
+See [run_visunet.R](run_visunet.R)
 *** 
 
 *** 
