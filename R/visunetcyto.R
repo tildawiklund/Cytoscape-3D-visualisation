@@ -226,20 +226,6 @@ visunetcyto = function(ruleSet, title="VisuNet_Networks", type ="RDF",
   message("")
   setVisualStyle(style_name)
 
-  # ---------- TILDA TESTS - add Z_AXIS + X+ Y to node attributes--------
-  # Z_AXIS -> node Z position (only visible with the Cy3D renderer)
-  updateStyleMapping(style_name,
-    mapVisualProperty("NODE_Z_LOCATION", "Z_AXIS", "p"))
-
-  # X_AXIS_norm_meanAcc -> node X position (only visible with the Cy3D renderer)
-  updateStyleMapping(style_name,
-    mapVisualProperty("NODE_X_LOCATION", "X_AXIS_norm_meanAcc", "p"))
-
-  # Y_AXIS_norm_meanSupp -> node Y position (only visible with the Cy3D renderer)
-  updateStyleMapping(style_name,
-    mapVisualProperty("NODE_Y_LOCATION", "Y_AXIS_norm_meanSupp", "p"))
-  # ------------------------------------------------------------
-
   message("Applying layout...")
   message("")
   layoutNetwork("force-directed", network)
@@ -283,4 +269,3 @@ visunetcyto = function(ruleSet, title="VisuNet_Networks", type ="RDF",
   }
   return(data)
 }
-

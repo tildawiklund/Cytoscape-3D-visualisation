@@ -17,6 +17,7 @@ createStyle = function(stylename, network) {
   edgeLabels <- mapVisualProperty('edge tooltip','title','p')
   edgeWidth <- mapVisualProperty('edge width', 'width', 'p')
 
+
   try(deleteVisualStyle(stylename), silent=TRUE)
 
   createVisualStyle(stylename, defaults, list(nodeSize, nodeFills, nodeLabels,
