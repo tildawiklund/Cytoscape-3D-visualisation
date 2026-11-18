@@ -5,7 +5,9 @@ library(RCy3)
 
 # Get functions for 3D implementation
 devtools::install_github("tildawiklund/Cytoscape-3D-visualisation")
-#devtools::load_all("/Users/tildawiklund/Desktop/Slutkursen/Cytoscape-3D-visualisation")
+
+# If you have the folder locally on your computer:
+#devtools::load_all("path to/Cytoscape-3D-visualisation")
 
 # Run Rosetta
 ros <- rosetta(autcon)

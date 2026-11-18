@@ -145,18 +145,6 @@ generateNet=function(decs, rules, type, RulesSetSite, TopNodes,FiltrParam,
     )
   }
 
-  # ----------------- TILDA tests to add column for Z+X+Y-axis --------------------
-  # To create random values for Z axis
-  #NodeInfoDF$Z_AXIS <- sample(0:300, nrow(NodeInfoDF), replace = TRUE)
-
-  # Create z values based on meanDecisionCoverage
-  NodeInfoDF$Z_AXIS_norm_meanDecCov <- scales::rescale(NodeInfoDF$meanDecisionCoverage, to = c(0, 300))
-
-  # Create x and y axis based on meanAcc and meanSupp
-  NodeInfoDF$X_AXIS_norm_meanAcc <- scales::rescale(NodeInfoDF$meanAcc, to = c(0, 300))
-  NodeInfoDF$Y_AXIS_norm_meanSupp <- scales::rescale(NodeInfoDF$meanSupp, to = c(0, 300))
-
-  # ---------------------------------------------------------------------------
 
   # OlD version
   # # overwrite if filtering is on support vs coverage
@@ -199,6 +187,16 @@ generateNet=function(decs, rules, type, RulesSetSite, TopNodes,FiltrParam,
   if(TopNodes != 0 & TopNodes <= dim(NodeInfoDF)[1]){
     NodeInfoDF = NodeInfoDF[1:TopNodes,]
   }
+
+
+   # ----------------- 3D: add columns that will be Z+X+Y-axis --------------------
+  # Create z values based on meanDecisionCoverage
+  NodeInfoDF$Z_AXIS_norm_meanDecCov <- scales::rescale(NodeInfoDF$meanDecisionCoverage, to = c(0, 300))
+
+  # Create x and y axis based on meanAcc and meanSupp
+  NodeInfoDF$X_AXIS_norm_meanAcc <- scales::rescale(NodeInfoDF$meanAcc, to = c(0, 300))
+  NodeInfoDF$Y_AXIS_norm_meanSupp <- scales::rescale(NodeInfoDF$meanSupp, to = c(0, 300))
+  # ---------------------------------------------------------------------------
 
 
   # ---- EDGES ----

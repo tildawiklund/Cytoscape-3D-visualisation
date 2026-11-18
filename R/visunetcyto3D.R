@@ -219,16 +219,14 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
     message("Creating style...")
     message("")
     createStyle(style_name, network)
-    setNodeFontSizeDefault(8, style.name = style_name)
-
-
+    setNodeFontSizeDefault(8, style.name = style_name) # 3D: Making labels smaller for interpretation
 
   }
   message("Applying style...")
   message("")
   setVisualStyle(style_name)
 
-  # ---------- TILDA TESTS - add Z_AXIS + X+ Y to node attributes--------
+  # ---------- For 3D: add Z_AXIS + X+ Y to node attributes--------
   # Z_AXIS_norm_meanDecCov -> node Z position (only visible with the Cy3D renderer)
   updateStyleMapping(style_name,
     mapVisualProperty("NODE_Z_LOCATION", "Z_AXIS_norm_meanDecCov", "p"))
@@ -248,18 +246,13 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
 
 
   
-  
-
-
-
+  # --- 3D: Add axes ---
   message("Adding axes...")
   message("")
+  
   # add axis to "all network" layout
   addAxes(net_suid)    
-  
-  # NEW: list that collects every network SUID, starting with "all"
-  all_suids <- net_suid  
-
+  # ---------------------
 
   #filters -- New --
   #filter_slides(network = net_suid)
@@ -272,11 +265,9 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
                        subnetwork.name=net_name, network=net_suid)
       # createSubnetwork(edges=edge_ids, edges.by.col = "id",
       #                  subnetwork.name=net_name, network=net_suid)
-      
-      
-
-      # add axes to each network
       setCurrentNetwork(network = sub_suid)
+      
+      # 3D: add axes to each network
       addAxes(sub_suid)
 
       
