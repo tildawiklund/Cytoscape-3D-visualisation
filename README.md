@@ -3,10 +3,9 @@
 <img src="images/VIsuNet_logo2.png" width=200; align="middle">
 
 *** 
-This is a work from komorowskilab/csVisuNet. The code supports 3D-visualisation. For instructions, see tildawiklund/3D-visualisation for more information.
+This is a fork from komorowskilab/csVisuNet. The code supports 3D-visualisation. For instructions, see tildawiklund/3D-visualisation for more information.
 
-How to run the 3D visualisation in Cytoscape:
-The following code is available in [run_visunet.R](run_visunet.R). 
+How to run the 3D visualisation in Cytoscape: 
 
 ```R
 library(R.ROSETTA)
@@ -32,7 +31,8 @@ commandsRun("cy3d set renderer rendererID=org.baderlab.cy3d")
 # VisuNet on Cytoscape in 3D format
 vis <- visunetcyto3D(ros$main, title="Networks")
 ```
-
+The
+ code is available in [run_visunet.R](run_visunet.R).
 *** 
 
 *** 
