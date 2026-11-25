@@ -21,11 +21,11 @@ addAxes <- function(net, len = 350) {
   loadTableData(data.frame(name = ax,
                           X_AXIS_norm_meanAcc  = c(0, len, 0, 0),
                           Y_AXIS_norm_meanSupp = c(0, 0, len, 0),
-                          Z_AXIS_norm_meanDecCov = c(0, 0, 0, len)),
+                          Z_AXIS = c(0, 0, 0, len)),
                           data.key.column = "name", table.key.column = "name", network = net)
 
   # Label the axes and make the helper nodes small and gray
-  setNodeLabelBypass(ax, c("origin", "X - Accuracy", "Y - Support", "Z - Decision Coverage"), network = net)
+  setNodeLabelBypass(ax, c("origin", "X - Accuracy", "Y - Support", "Z"), network = net)
   setNodeFontSizeBypass(ax, 12, network = net)   # label size for the axis nodes
   setNodeColorBypass(ax, "#888888", network = net)
   setNodeSizeBypass(ax, 1, network = net)

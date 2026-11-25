@@ -190,8 +190,10 @@ generateNet=function(decs, rules, type, RulesSetSite, TopNodes,FiltrParam,
 
 
    # ----------------- 3D: add columns that will be Z+X+Y-axis --------------------
-  # Create z values based on meanDecisionCoverage
-  NodeInfoDF$Z_AXIS_norm_meanDecCov <- scales::rescale(NodeInfoDF$meanDecisionCoverage, to = c(0, 300))
+  # Create z values
+    #NodeInfoDF$Z_AXIS <- scales::rescale(NodeInfoDF$meanDecisionCoverage, to = c(0, 300))
+    NodeInfoDF$Z_AXIS <- scales::rescale(NodeInfoDF$NodeConnection, to = c(0, 300))
+
 
   # Create x and y axis based on meanAcc and meanSupp
   NodeInfoDF$X_AXIS_norm_meanAcc <- scales::rescale(NodeInfoDF$meanAcc, to = c(0, 300))

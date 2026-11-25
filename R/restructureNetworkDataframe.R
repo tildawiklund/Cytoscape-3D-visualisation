@@ -1,4 +1,5 @@
-restructureNetworkDF <- function(network, NodeSizeScale, NodeBorderScale, EdgeWidthScale, addGO){
+# 3D: Added an extra parameter for 3D - this will save the correct columns for 3D and for 2D
+restructureNetworkDF <- function(network, NodeSizeScale, NodeBorderScale, EdgeWidthScale, addGO, is3D = FALSE){
   colnames(network$edges)[colnames(network$edges) == "from"] <- "source"
   colnames(network$edges)[colnames(network$edges) == "to"] <- "target"
   colnames(network$nodes)[colnames(network$nodes) == "label"] <- "name"
@@ -44,12 +45,20 @@ restructureNetworkDF <- function(network, NodeSizeScale, NodeBorderScale, EdgeWi
     network$nodes$title = gsub("<br/>", "\n", network$nodes$title)
   }
 
+# 3D: to only show relevant info in cytoscape
+  if (is3D){
   node_columns_to_keep <- c("id", "Rules", "name", "group", "color.background", "value",
                             "color.border", "borderWidth", "meanAcc",
                             # ---------- 3D: keeps the columns needed for 3D visualisation ------- 
-                            "meanSupp", "meanDecisionCoverage", "title", "Z_AXIS_norm_meanDecCov",
+                            "meanSupp", "meanDecisionCoverage", "title", "Z_AXIS",
                             "X_AXIS_norm_meanAcc", "Y_AXIS_norm_meanSupp", "popup")
-                            # ------------------------------ 
+                            }
+  
+  else
+  {node_columns_to_keep <- c("id", "Rules", "name", "group", "color.background", "value",
+                            "color.border", "borderWidth", "meanAcc",
+                            "meanSupp", "meanDecisionCoverage", "title", "popup")
+  }
 
   network$nodes <- network$nodes[intersect(node_columns_to_keep, names(network$nodes))]
 

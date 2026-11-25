@@ -208,7 +208,7 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
   network <<- data[[net_name]]
   message("Loading data...")
   message("")
-  network <- restructureNetworkDF(network, NodeSizeScale, NodeBorderScale, EdgeWidthScale, addGO)
+  network <- restructureNetworkDF(network, NodeSizeScale, NodeBorderScale, EdgeWidthScale, addGO, is3D = TRUE)
   suppressMessages({
     net_suid <- createNetworkFromDataFrames(network$nodes,network$edges, title=net_name, collection=title)
   })
@@ -227,9 +227,9 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
   setVisualStyle(style_name)
 
   # ---------- For 3D: add Z_AXIS + X+ Y to node attributes--------
-  # Z_AXIS_norm_meanDecCov -> node Z position (only visible with the Cy3D renderer)
+  # Z_AXIS -> node Z position (only visible with the Cy3D renderer)
   updateStyleMapping(style_name,
-    mapVisualProperty("NODE_Z_LOCATION", "Z_AXIS_norm_meanDecCov", "p"))
+    mapVisualProperty("NODE_Z_LOCATION", "Z_AXIS", "p"))
 
   # X_AXIS_norm_meanAcc -> node X position (only visible with the Cy3D renderer)
   updateStyleMapping(style_name,
