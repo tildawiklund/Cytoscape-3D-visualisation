@@ -1,6 +1,6 @@
 generate_object = function(decs, rules, type, TopNodes, FiltrParam,
                            NodeColorType, EdgeColor, EdgeWidth,
-                           NewDataNodes, NewDataEdges, NodeSize){
+                           NewDataNodes, NewDataEdges, NodeSize, Z = "NodeConnection"){
   AllNets = NULL
   Net = NULL
   for (i in decs){
@@ -8,9 +8,30 @@ generate_object = function(decs, rules, type, TopNodes, FiltrParam,
     RulesDec = rules[which(rules$decision == i), ]
     RulesSetSize = dim(RulesDec)[1]
     if (RulesSetSize != 0){
-      Net = generateNet(i, RulesDec, type, RulesSetSize, TopNodes, FiltrParam,
+      # 3D
+      #Z <- match.arg(Z, c("NodeConnection", "meanDecisionCoverage", "meanAcc", "meanSupp"))
+      if(Z == "NodeConnection"){
+        Net = generateNet(i, RulesDec, type, RulesSetSize, TopNodes, FiltrParam,
                         NodeColorType = NodeColorType, EdgeColor, EdgeWidth,
-                        NewDataNodes, NewDataEdges, NodeSize)
+                        NewDataNodes, NewDataEdges, NodeSize, Z = "NodeConnection")}
+      
+      if (Z == "meanDecisionCoverage")  {
+        Net = generateNet(i, RulesDec, type, RulesSetSize, TopNodes, FiltrParam,
+                        NodeColorType = NodeColorType, EdgeColor, EdgeWidth,
+                        NewDataNodes, NewDataEdges, NodeSize, Z = "meanDecisionCoverage")
+      }
+
+      if (Z == "meanAcc")  {
+        Net = generateNet(i, RulesDec, type, RulesSetSize, TopNodes, FiltrParam,
+                        NodeColorType = NodeColorType, EdgeColor, EdgeWidth,
+                        NewDataNodes, NewDataEdges, NodeSize, Z = "meanAcc")
+      }
+
+      if (Z == "meanSupp")  {
+        Net = generateNet(i, RulesDec, type, RulesSetSize, TopNodes, FiltrParam,
+                        NodeColorType = NodeColorType, EdgeColor, EdgeWidth,
+                        NewDataNodes, NewDataEdges, NodeSize, Z = "meanSupp")
+      }                
     } else {
       # --- Elsa: changed NodeRulesSetPerNode -> RulesSetPerNode ---
       Net = list(nodes = NULL, edges = NULL, RulesSetPerNode = NULL)

@@ -1,5 +1,7 @@
+# 3D: add option to decide Z axis metrics, put nodeconnection as default
 generateNet=function(decs, rules, type, RulesSetSite, TopNodes,FiltrParam,
-                     NodeColorType, EdgeColor, EdgeWidth, NewDataNodes, NewDataEdges, NodeSize){
+                     NodeColorType, EdgeColor, EdgeWidth, NewDataNodes, 
+                     NewDataEdges, NodeSize, Z = "NodeConnection"){
   if(type == 'RDF'){
     vec = as.character(as.matrix(rules["features"]))
     lst1 = sapply(vec, function(x) strsplit(x, ",", fixed = TRUE))
@@ -190,10 +192,24 @@ generateNet=function(decs, rules, type, RulesSetSite, TopNodes,FiltrParam,
 
 
    # ----------------- 3D: add columns that will be Z+X+Y-axis --------------------
-  # Create z values
-    #NodeInfoDF$Z_AXIS <- scales::rescale(NodeInfoDF$meanDecisionCoverage, to = c(0, 300))
-    NodeInfoDF$Z_AXIS <- scales::rescale(NodeInfoDF$NodeConnection, to = c(0, 300))
+  # Create z values, this assigns the most similar (can handle small typos), expresses error otherwise
+  #Z <- match.arg(Z, c("NodeConnection", "meanDecisionCoverage", "meanAcc", "meanSupp"))
 
+  if(Z == "NodeConnection"){
+        NodeInfoDF$Z_AXIS <- scales::rescale(NodeInfoDF$NodeConnection, to = c(0, 300))
+  }
+
+  if (Z == "meanDecisionCoverage"){
+    NodeInfoDF$Z_AXIS <- scales::rescale(NodeInfoDF$meanDecisionCoverage, to = c(0, 300))
+  }
+
+  if (Z == "meanAcc"){
+    NodeInfoDF$Z_AXIS <- scales::rescale(NodeInfoDF$meanAcc, to = c(0, 300))
+  }
+  # meanSupp
+  else {
+    NodeInfoDF$Z_AXIS <- scales::rescale(NodeInfoDF$meanSupp, to = c(0, 300))
+  }
 
   # Create x and y axis based on meanAcc and meanSupp
   NodeInfoDF$X_AXIS_norm_meanAcc <- scales::rescale(NodeInfoDF$meanAcc, to = c(0, 300))

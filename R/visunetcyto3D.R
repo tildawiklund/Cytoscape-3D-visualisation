@@ -92,6 +92,9 @@
 #' @param style Boolean that controls whether cytoscape should create a styling or not:
 #' Default is TRUE, needs to be TRUE the first time the function is run
 #' Is used to speed up the process if the filtering needs to be redone
+#' 
+#' @param Z chooses which metric to decide the values of the Z axis. Available metrics to choose from: "NodeConnection", "meanDecisionCoverage", "meanAcc", "meanSupp".
+#' Default is NodeConnection.
 #'
 #'@references
 #' See the \href{https://komorowskilab.github.io/VisuNet/}{documentation} for more details and examples.
@@ -155,7 +158,7 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
                        addGO = FALSE, GO_ontology = "MF", NodeSize = "sum",
                        NodeSizeScale=c(15,50), NodeBorderScale=c(1,12),
                        EdgeWidthScale=c(1,6),
-                       minAcc=-1, minSupp=-1, minDecisionCoverage=-1, style=TRUE, TopNodes=0){
+                       minAcc=-1, minSupp=-1, minDecisionCoverage=-1, style=TRUE, TopNodes=0, Z = "NodeConnection"){
   rules <- ruleSet
   rules <-  data_input(rules, type)
   rules_10per_param <-  filtration_rules_10per(rules)
@@ -191,7 +194,7 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
     filter_rules(rules, minAcc, minSupp, FiltrParam, value_slider)
   )
   RulesFiltr =  filtration_rules(rules, minAcc, FiltrParam, value_slider)
-  data = generate_object(decs, RulesFiltr, type, TopNodes, FiltrParam, NodeColorType, EdgeColor, EdgeWidth, CustObjectNodes, CustObjectEdges, NodeSize)
+  data = generate_object(decs, RulesFiltr, type, TopNodes, FiltrParam, NodeColorType, EdgeColor, EdgeWidth, CustObjectNodes, CustObjectEdges, NodeSize, Z = Z)
   if(addGO) {
     message("Adding Go Annotations")
     message("")
@@ -232,17 +235,18 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
     mapVisualProperty("NODE_Z_LOCATION", "Z_AXIS", "p"))
 
   # X_AXIS_norm_meanAcc -> node X position (only visible with the Cy3D renderer)
-  updateStyleMapping(style_name,
-    mapVisualProperty("NODE_X_LOCATION", "X_AXIS_norm_meanAcc", "p"))
+  #updateStyleMapping(style_name,
+  #  mapVisualProperty("NODE_X_LOCATION", "X_AXIS_norm_meanAcc", "p"))
 
   # Y_AXIS_norm_meanSupp -> node Y position (only visible with the Cy3D renderer)
-  updateStyleMapping(style_name,
-    mapVisualProperty("NODE_Y_LOCATION", "Y_AXIS_norm_meanSupp", "p"))
+  #updateStyleMapping(style_name,
+   # mapVisualProperty("NODE_Y_LOCATION", "Y_AXIS_norm_meanSupp", "p"))
   # ------------------------------------------------------------
 
   message("Applying layout...")
   message("")
-  layoutNetwork("force-directed", network)
+  #layoutNetwork("force-directed", network)
+  layoutNetwork("circular", network)
 
 
   
