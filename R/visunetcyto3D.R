@@ -95,6 +95,9 @@
 #' 
 #' @param Z chooses which metric to decide the values of the Z axis. Available metrics to choose from: "NodeConnection", "meanDecisionCoverage", "meanAcc", "meanSupp".
 #' Default is NodeConnection.
+#' 
+#' @param layout specifies the layout in the xy plane. Available layouts are "force-directed" and "circular".
+#' Default is "force-directed" and looks like the 2D networks.
 #'
 #'@references
 #' See the \href{https://komorowskilab.github.io/VisuNet/}{documentation} for more details and examples.
