@@ -158,7 +158,7 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
                        addGO = FALSE, GO_ontology = "MF", NodeSize = "sum",
                        NodeSizeScale=c(15,50), NodeBorderScale=c(1,12),
                        EdgeWidthScale=c(1,6),
-                       minAcc=-1, minSupp=-1, minDecisionCoverage=-1, style=TRUE, TopNodes=0, Z = "NodeConnection"){
+                       minAcc=-1, minSupp=-1, minDecisionCoverage=-1, style=TRUE, TopNodes=0, Z = "NodeConnection", layout = "force-directed"){
   rules <- ruleSet
   rules <-  data_input(rules, type)
   rules_10per_param <-  filtration_rules_10per(rules)
@@ -245,9 +245,15 @@ visunetcyto3D = function(ruleSet, title="VisuNet_Networks", type ="RDF",
 
   message("Applying layout...")
   message("")
-  #layoutNetwork("force-directed", network)
-  layoutNetwork("circular", network)
-
+  
+  # 3D choosing layout on xy plane
+  if(layout == "force-directed"){
+    layoutNetwork("force-directed", network)
+  }
+  if (layout == "circular"){
+    layoutNetwork("circular", network)
+  }
+  else{ message("Error: Choose either force-directed or circular layout.")}
 
   
   # --- 3D: Add axes ---

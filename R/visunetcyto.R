@@ -152,7 +152,7 @@
 visunetcyto = function(ruleSet, title="VisuNet_Networks", type ="RDF",
                        NodeColorType = "DL", NodeSizeMetric = "DC", EdgeColor = 'R',
                        EdgeWidth=10, CustObjectNodes=list(), CustObjectEdges=list(),
-                       addGO = FALSE, GO_ontology = "MF", NodeSize = "sum",
+                       addGO = TRUE, GO_ontology = "MF", NodeSize = "sum",
                        NodeSizeScale=c(15,50), NodeBorderScale=c(1,12),
                        EdgeWidthScale=c(1,6),
                        minAcc=-1, minSupp=-1, minDecisionCoverage=-1, style=TRUE, TopNodes=0){
